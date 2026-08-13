@@ -78,6 +78,16 @@ const isNotFound = computed(
           <dd class="mt-1 text-gray-900">{{ formatDateTime(invoice.updated_at) }}</dd>
         </div>
       </dl>
+
+      <h2 class="mt-8 text-lg font-semibold text-gray-900">Edit invoice</h2>
+      <div class="mt-4 rounded-lg border border-gray-200 bg-white p-6">
+        <InvoiceEditForm
+          :key="invoice.id"
+          :invoice="invoice"
+          @updated="refresh()"
+          @conflict="refresh()"
+        />
+      </div>
     </div>
   </div>
 </template>
