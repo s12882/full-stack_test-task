@@ -21,13 +21,13 @@ const isNotFound = computed(
     <NuxtLink to="/invoices" class="text-sm text-gray-500 hover:underline">
       <- Back to invoices
     </NuxtLink>
-    <div v-if="status === 'pending'" class="mt-6 text-sm text-gray-500">
+    <div v-if="status === 'pending' && !invoice" class="mt-6 text-sm text-gray-500">
       Loading invoice…
     </div>
     <div v-else-if="isNotFound" class="mt-6 rounded-md bg-gray-100 p-4 text-sm text-gray-700">
       Invoice not found
     </div>
-    <div v-else-if="error" class="mt-6 rounded-md bg-red-50 p-4 text-sm text-red-700">
+    <div v-else-if="error && !invoice" class="mt-6 rounded-md bg-red-50 p-4 text-sm text-red-700">
       <p>Failed to load invoice. {{ error.message }}</p>
       <button class="mt-2 font-medium underline" @click="refresh()">
         Retry
