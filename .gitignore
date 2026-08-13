@@ -1,1 +1,16 @@
 .idea
+
+# auto-loaded by docker-compose
+.env
+.env.*
+!.env.example
+
+# Local development data volumes
+.docker/data/
+docker-volumes/
+pgdata/
+mysql_data/
+
+# Container and build logs
+*.log
+docker-compose.log

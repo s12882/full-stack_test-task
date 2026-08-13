@@ -7,10 +7,8 @@ import type {
 
 export function useInvoicesApi() {
   const config = useRuntimeConfig()
-
-  const client = $fetch.create({
-    baseURL: config.public.apiBase,
-  })
+  const baseURL = import.meta.server ? config.apiBaseInternal : config.public.apiBase
+  const client = $fetch.create({ baseURL })
 
   return {
     listInvoices: (params?: { status?: string; page?: number }) =>

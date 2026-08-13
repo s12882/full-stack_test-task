@@ -9,6 +9,8 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   runtimeConfig: {
+    // Overridden by NUXT_API_BASE_INTERNAL from Docker
+    apiBaseInternal: 'http://localhost:8000/api',
     public: {
       apiBase: 'http://localhost:8000/api',
     },
