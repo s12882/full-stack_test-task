@@ -18,7 +18,7 @@ const invoices = computed(() => data.value?.data ?? [])
 const meta = computed(() => data.value?.meta)
 
 function goToInvoice(id: string) {
-  // TODO: navigate
+  navigateTo(`/invoices/${id}`)
 }
 </script>
 
@@ -65,9 +65,7 @@ function goToInvoice(id: string) {
               {{ formatAmount(invoice.gross_amount, invoice.currency) }}
             </td>
             <td class="px-4 py-3">
-              <span class="inline-flex items-center">
-                {{ invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1) }}
-              </span>
+              <StatusBadge :status="invoice.status" />
             </td>
             <td class="px-4 py-3 text-gray-700">{{ formatDate(invoice.due_date) }}</td>
           </tr>
